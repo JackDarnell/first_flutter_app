@@ -6,14 +6,38 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  //classess should be standalone, all data and funcs should be in the same class. Keeps the widget as its own unit.
+
+  void answerQuestion() {
+    print('Answer chosen!');
+  }
+
   Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?'
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My First App'),
         ),
-        body: Text('This is my default text!'),
-      ), //scaffold creates a basic page design for app
+        body: Column(children: <Widget>[
+          Text('The question!'),
+          ElevatedButton(
+            child: Text('Answer 1'),
+            onPressed: answerQuestion,
+          ),
+          ElevatedButton(
+            child: Text('Answer 2'),
+            onPressed: null,
+          ),
+          ElevatedButton(
+            child: Text('Answer 3'),
+            onPressed: null,
+          ),
+        ]),
+      ),
     );
   }
 }
