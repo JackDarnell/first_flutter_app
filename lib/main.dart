@@ -5,10 +5,23 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   //classess should be standalone, all data and funcs should be in the same class. Keeps the widget as its own unit.
 
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
   void answerQuestion() {
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
     print('Answer chosen!');
   }
 
@@ -20,21 +33,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My First App'),
+          title: Text('Flutter App'),
         ),
         body: Column(children: <Widget>[
-          Text('The question!'),
+          Text(questions[questionIndex]),
           ElevatedButton(
             child: Text('Answer 1'),
             onPressed: answerQuestion,
           ),
           ElevatedButton(
             child: Text('Answer 2'),
-            onPressed: null,
+            onPressed: answerQuestion,
           ),
           ElevatedButton(
             child: Text('Answer 3'),
-            onPressed: null,
+            onPressed: () => print('Answer 3 chosen!'),
           ),
         ]),
       ),
