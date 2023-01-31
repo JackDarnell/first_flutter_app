@@ -1,6 +1,8 @@
 //first flutter app written by jack darnell from course flutter complete guide
 import 'package:flutter/material.dart';
 
+import './question.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   void _answerQuestion() {
     setState(() {
-      _questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
     print('Answer chosen!');
   }
@@ -37,7 +39,7 @@ class _MyAppState extends State<MyApp> {
           title: Text('Flutter App'),
         ),
         body: Column(children: <Widget>[
-          Text(questions[_questionIndex]),
+          Question(questions[_questionIndex]),
           ElevatedButton(
             child: Text('Answer 1'),
             onPressed: _answerQuestion,
