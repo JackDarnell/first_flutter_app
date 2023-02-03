@@ -31,8 +31,22 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     var questions = [
-      'What\'s your favorite color?',
-      'What\'s your favorite animal?'
+      {
+        'questionText': 'What\'s your favorite color?',
+        'answers': ['Black', 'Red', 'Green', 'White']
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      },
+      {
+        'questionText': 'What\'s your favorite clothing brand?',
+        'answers': ['Nike', 'Polo', 'Reebok', 'North Face']
+      },
+      {
+        'questionText': 'What\'s your favorite tech company?',
+        'answers': ['Apple', 'Microsoft', 'Nokia', 'Samsung']
+      },
     ];
     return MaterialApp(
       home: Scaffold(
@@ -40,11 +54,12 @@ class _MyAppState extends State<MyApp> {
           title: Text('Flutter App'),
         ),
         body: Column(children: <Widget>[
-          Question(questions[_questionIndex]),
-          Answer(
-              _answerQuestion), //without () it will not execute the function, it will pass a pointer to it
-          Answer(_answerQuestion),
-          Answer(_answerQuestion),
+          Question(questions[_questionIndex]['questionText'] as String),
+          ...(questions[_questionIndex]['answers'] as List<String>)
+              .map((answer) {
+            //... is the spread operator
+            return Answer(_answerQuestion, answer);
+          }).toList()
         ]),
       ),
     );
