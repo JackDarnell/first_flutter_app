@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Question extends StatelessWidget {
   final String questionText;
-  //final says this value will never change after constructor
+  //final says this value will never change after constructor, locked in during runtime
 
   Question(this.questionText); //constructor
 

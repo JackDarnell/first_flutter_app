@@ -30,7 +30,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget build(BuildContext context) {
-    var questions = [
+    final questions = [
+      //final means it can't be changed
+      //variables are all pointers also
       {
         'questionText': 'What\'s your favorite color?',
         'answers': ['Black', 'Red', 'Green', 'White']
